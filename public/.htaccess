@@ -1,0 +1,48 @@
+# Life Protocol — Apache config for cPanel shared hosting
+# Copied to the web root by Vite (lives in public/).
+
+# --- Force HTTPS ---------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Compression ---------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript \
+    application/javascript application/json image/svg+xml \
+    application/xml font/ttf font/otf
+</IfModule>
+
+# --- Caching -------------------------------------------------------------
+# Vite emits content-hashed asset filenames, so they can be cached forever.
+# HTML must stay fresh so new deploys are picked up immediately.
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  <FilesMatch "\.(?:css|js|woff2?|ttf|otf|eot)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, immutable, max-age=31536000"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:webp|jpg|jpeg|png|gif|svg|ico)$">
+    ExpiresDefault "access plus 30 days"
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  <FilesMatch "\.(?:html)$">
+    ExpiresDefault "access plus 0 seconds"
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# --- Security headers ----------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# --- Default document ----------------------------------------------------
+DirectoryIndex index.html

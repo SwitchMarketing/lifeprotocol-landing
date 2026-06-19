@@ -62,6 +62,14 @@ An inline script in `index.html` sets the class before paint to avoid a flash.
 Sections alternate base `bg-surface` vs `bg-section-alt` bands (with `border-y border-outline`)
 for visual separation in both modes. The Speaker section breaks the rhythm as a dark spotlight.
 
+## Deployment
+
+Pushing to `master` triggers `.github/workflows/deploy.yml`: it runs `npm ci && npm run build`
+and uploads `dist/` to cPanel shared hosting over **FTPS** (root domain, `base = '/'`). Required
+GitHub secrets/variables are documented in `README.md`. `public/.htaccess` (HTTPS redirect,
+compression, cache, security headers) ships to the web root via Vite. Note: pushing to `master`
+deploys to production — branch for non-trivial work.
+
 ## Animations
 
 `useScrollReveal` (`src/hooks/useScrollReveal.js`) is an IntersectionObserver that adds
