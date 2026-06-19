@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+/* Class-based dark mode (toggle adds .dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Semantic design tokens — Clinical Precision (DESIGN.md)
+   Values swap between light & dark; Tailwind utilities reference
+   them via @theme inline below (bg-surface, text-on-surface, ...).
+----------------------------------------------------------------*/
+:root {
+  --surface: #f4fbfd;
+  --surface-mist: #f0f7f9;
+  --section-alt: #e6eef2; /* alternating section band — cooler than base */
+  --surface-container: #ffffff;
+  --surface-container-high: #eef5f7;
+  --on-surface: #161d1e;
+  --on-surface-variant: #3f484d;
+  --outline: #bec8ce;
+  --outline-strong: #6f787e;
+
+  --primary: #005974;
+  --primary-bright: #037394; /* clinical teal */
+  --on-primary: #ffffff;
+  --primary-container: #d4f0ff;
+  --on-primary-container: #001f2a;
+
+  --accent: #e57f27; /* emergency amber */
+  --accent-bright: #fe933a;
+  --on-accent: #ffffff;
+  --accent-container: #ffdcc5;
+  --on-accent-container: #301400;
+
+  --success: #2f6b3f;
+  --hero-glow-a: rgba(3, 115, 148, 0.18);
+  --hero-glow-b: rgba(229, 127, 39, 0.14);
+  --ring: rgba(3, 115, 148, 0.55);
+  --shadow-color: 11 22 36;
+}
+
+.dark {
+  --surface: #0a1416;
+  --surface-mist: #0d1a1d;
+  --section-alt: #0f1e23; /* alternating section band — lighter than base */
+  --surface-container: #122024;
+  --surface-container-high: #18292e;
+  --on-surface: #dde4e6;
+  --on-surface-variant: #a6b2b6;
+  --outline: #2b3b41;
+  --outline-strong: #46555b;
+
+  --primary: #80d1f5; /* inverse primary — bright on dark */
+  --primary-bright: #80d1f5;
+  --on-primary: #00131c;
+  --primary-container: #004d64;
+  --on-primary-container: #d4f0ff;
+
+  --accent: #fe933a;
+  --accent-bright: #ffb784;
+  --on-accent: #2a1400;
+  --accent-container: #713700;
+  --on-accent-container: #ffdcc5;
+
+  --success: #8fd99e;
+  --hero-glow-a: rgba(128, 209, 245, 0.16);
+  --hero-glow-b: rgba(254, 147, 58, 0.16);
+  --ring: rgba(128, 209, 245, 0.6);
+  --shadow-color: 0 0 0;
+}
+
+@theme inline {
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+  --color-surface: var(--surface);
+  --color-surface-mist: var(--surface-mist);
+  --color-section-alt: var(--section-alt);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-strong: var(--outline-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-bright: var(--primary-bright);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-on-accent: var(--on-accent);
+  --color-accent-container: var(--accent-container);
+  --color-on-accent-container: var(--on-accent-container);
+
+  --color-success: var(--success);
+
+  --radius-sm: 0.25rem;
+  --radius-DEFAULT: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+  ::selection {
+    background-color: var(--primary-bright);
+    color: #ffffff;
+  }
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--ring);
+    border-radius: 0.4rem;
+  }
+}
+
+/* Soft ambient elevation per DESIGN.md (diffused, low opacity) */
+@utility shadow-soft {
+  box-shadow: 0 4px 16px -2px rgb(var(--shadow-color) / 0.1),
+    0 2px 6px -2px rgb(var(--shadow-color) / 0.08);
+}
+@utility shadow-lift {
+  box-shadow: 0 18px 40px -12px rgb(var(--shadow-color) / 0.22),
+    0 8px 16px -8px rgb(var(--shadow-color) / 0.14);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-18px) scale(1.04); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Scroll-reveal: hidden until .is-visible is added by the observer.
+   Animation-based so per-item animation-delay staggering never interferes
+   with hover transitions or a card's own static transform. */
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+  }
+  .reveal.is-visible {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

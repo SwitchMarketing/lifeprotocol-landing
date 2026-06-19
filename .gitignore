@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.vite
+.DS_Store
+
+# Local Claude/agent tooling (not part of the web app)
+.claude/
+
+# Large hero source PNG — kept locally for re-optimization, served as .webp/.jpg
+public/hero_bioscience.png
