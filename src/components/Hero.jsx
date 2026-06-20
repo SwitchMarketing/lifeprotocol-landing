@@ -1,4 +1,5 @@
 import { ArrowRight, MapPin, Clock, Shield } from './Icons.jsx'
+import { EVENT_LOCATION, EVENT_DATE_SHORT, EVENT_TIME } from '../lib/config.js'
 
 const STATS = [
   { value: '3', label: 'Fő protokoll-blokk' },
@@ -38,11 +39,11 @@ export default function Hero() {
           <div className="animate-rise flex flex-wrap items-center gap-2.5">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white/90 backdrop-blur-sm">
               <Clock className="h-4 w-4 text-[#80d1f5]" />
-              Október közepe
+              {EVENT_DATE_SHORT} · {EVENT_TIME}
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white/90 backdrop-blur-sm">
               <MapPin className="h-4 w-4 text-[#80d1f5]" />
-              Budapest · Élő esemény
+              {EVENT_LOCATION} · Élő esemény
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-[#fe933a]/50 bg-[#fe933a]/15 px-3.5 py-1.5 text-xs font-bold text-[#ffb784] backdrop-blur-sm">
               Early Bird élő
@@ -57,7 +58,7 @@ export default function Hero() {
           </h1>
 
           <p className="animate-rise mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl" style={{ animationDelay: '120ms' }}>
-            Egy exkluzív, gyakorlatias budapesti nap, ahol{' '}
+            Egy exkluzív, gyakorlatias élő nap {EVENT_LOCATION} szívében, ahol{' '}
             <span className="font-semibold text-white">Victor C. Fields</span> és a Life Protocol
             szakértői csapata mutatja be a legújabb kutatásokat és a kézzelfogható protokollokat — a
             nehézfémek és környezeti toxinok kivezetésétől a sejtszintű regenerációig.

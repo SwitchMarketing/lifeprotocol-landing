@@ -1,5 +1,6 @@
 import { Section, SectionHeading } from './Section.jsx'
 import { Check, ArrowRight, Ticket, Crown } from './Icons.jsx'
+import { EVENT_LOCATION, EARLY_BIRD_DEADLINE_LABEL } from '../lib/config.js'
 
 // Ticket prices come from .env (VITE_PRICE_*), formatted with Hungarian grouping.
 const fmtPrice = (n) => new Intl.NumberFormat('hu-HU').format(n)
@@ -18,7 +19,7 @@ const TIERS = [
     badgeTone: 'accent',
     price: fmtPrice(PRICES.earlyBird),
     suffix: 'Ft',
-    note: 'Korlátozott darabszám — amíg a keret tart',
+    note: `Határidő: ${EARLY_BIRD_DEADLINE_LABEL} · korlátozott darabszám`,
     forWho: 'A leggyorsabbaknak, akik most döntenek.',
     cta: 'Lecsapok az Early Birdre',
     highlight: false,
@@ -26,7 +27,7 @@ const TIERS = [
       'Teljes élő részvétel mindhárom előadás-blokkon',
       'Belépés a kiállítói és bemutató térbe',
       'A teljes napos program minden gyakorlati demója',
-      'Közösségi élő esemény Budapesten',
+      `Közösségi élő esemény — ${EVENT_LOCATION}`,
     ],
   },
   {

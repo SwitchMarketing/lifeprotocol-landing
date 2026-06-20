@@ -1,4 +1,11 @@
 import { MapPin, Clock } from './Icons.jsx'
+import {
+  EVENT_LOCATION,
+  EVENT_VENUE,
+  EVENT_MAP_URL,
+  EVENT_DATE_LABEL,
+  EVENT_TIME,
+} from '../lib/config.js'
 
 export default function Footer() {
   return (
@@ -20,11 +27,20 @@ export default function Footer() {
             </p>
             <div className="mt-5 flex flex-col gap-2 text-sm text-on-surface-variant">
               <span className="inline-flex items-center gap-2">
-                <Clock className="h-4 w-4 text-primary" /> Október közepe · egész napos program
+                <Clock className="h-4 w-4 shrink-0 text-primary" /> {EVENT_DATE_LABEL}, {EVENT_TIME}-tól · egész napos program
               </span>
-              <span className="inline-flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary" /> Budapest · a pontos helyszínt a jegyvásárlók kapják meg
-              </span>
+              <a
+                href={EVENT_MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-start gap-2 transition-colors duration-200 hover:text-primary cursor-pointer"
+              >
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span>
+                  {EVENT_VENUE} · {EVENT_LOCATION}
+                  <span className="block text-xs text-on-surface-variant/80">Megnyitás térképen</span>
+                </span>
+              </a>
             </div>
           </div>
 

@@ -2,8 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { initAnalytics } from './lib/analytics.js'
+import { applyEventMeta } from './lib/config.js'
 import './index.css'
 
+applyEventMeta()
 initAnalytics()
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Section } from './Section.jsx'
 import { Flame, Users, Clock, ArrowRight } from './Icons.jsx'
-
-// Event date — configurable via VITE_EVENT_DATE (.env), defaults to mid-October.
-const EVENT_DATE = new Date(import.meta.env.VITE_EVENT_DATE || '2026-10-15T09:00:00+02:00')
+import { EVENT_DATE, EARLY_BIRD_DEADLINE_LABEL } from '../lib/config.js'
 
 function getRemaining() {
   const diff = EVENT_DATE.getTime() - Date.now()
@@ -72,7 +70,7 @@ export default function Urgency() {
             </span>
             <span className="inline-flex items-center gap-2 rounded-full bg-surface-container px-4 py-2 text-sm font-medium text-on-surface-variant shadow-soft">
               <Clock className="h-4 w-4 text-accent" />
-              Az ár az időpont közeledtével emelkedik
+              Early Bird határidő: {EARLY_BIRD_DEADLINE_LABEL}
             </span>
           </div>
 
