@@ -19,10 +19,27 @@ npm run build      # production build a dist/ mappába
 npm run preview    # a build előnézete
 ```
 
+## Konfiguráció (`.env`)
+
+A tartalmi/üzleti paraméterek a `.env` fájlban vannak (Vite `VITE_` prefix). Ez **verziókövetett**,
+mert a GitHub Actions build innen olvas (az értékek a klienskódba kerülnek, nem titkok). Titkos vagy
+lokális felülíráshoz használj `.env.local`-t (gitignore-olt). Lásd `.env.example`.
+
+| Változó | Mire való |
+|---------|-----------|
+| `VITE_EVENT_DATE` | Az esemény dátuma (ISO 8601) — a visszaszámláló ezt használja |
+| `VITE_PRICE_EARLY_BIRD` / `_NORMAL` / `_VIP` | Jegyárak Ft-ban (egész szám) |
+| `VITE_GTM_ID` | Google Tag Manager konténer ID — üresen nem tölt be semmit |
+| `VITE_META_PIXEL_ID` | Meta (Facebook) Pixel ID — üresen nem tölt be semmit |
+
+Az analytics loaderek (`src/lib/analytics.js`) csak akkor injektálják a kódot, ha az adott ID ki van
+töltve. Érték módosítása után újra kell buildelni (a Vite build időben ágyazza be).
+
 ## Felépítés
 
 - `src/components/` — szekciók: Hero, Problem, Audience, Topics, Speaker, Urgency, Pricing, Footer
 - `src/hooks/` — `useTheme` (téma), `useScrollReveal` (görgetés-animációk)
+- `src/lib/analytics.js` — env-vezérelt GTM / Meta Pixel loaderek
 - `src/index.css` — design tokenek (Clinical Precision rendszer, light/dark CSS-változók)
 - `docs/DESIGN.md` — a teljes design rendszer leírása
 

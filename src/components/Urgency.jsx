@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { Section } from './Section.jsx'
 import { Flame, Users, Clock, ArrowRight } from './Icons.jsx'
 
-// Mid-October event date.
-const EVENT_DATE = new Date('2026-10-15T09:00:00+02:00')
+// Event date — configurable via VITE_EVENT_DATE (.env), defaults to mid-October.
+const EVENT_DATE = new Date(import.meta.env.VITE_EVENT_DATE || '2026-10-15T09:00:00+02:00')
 
 function getRemaining() {
   const diff = EVENT_DATE.getTime() - Date.now()

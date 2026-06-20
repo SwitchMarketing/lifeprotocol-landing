@@ -1,6 +1,14 @@
 import { Section, SectionHeading } from './Section.jsx'
 import { Check, ArrowRight, Ticket, Crown } from './Icons.jsx'
 
+// Ticket prices come from .env (VITE_PRICE_*), formatted with Hungarian grouping.
+const fmtPrice = (n) => new Intl.NumberFormat('hu-HU').format(n)
+const PRICES = {
+  earlyBird: Number(import.meta.env.VITE_PRICE_EARLY_BIRD) || 34900,
+  normal: Number(import.meta.env.VITE_PRICE_NORMAL) || 49900,
+  vip: Number(import.meta.env.VITE_PRICE_VIP) || 89900,
+}
+
 const TIERS = [
   {
     id: 'early-bird',
@@ -8,7 +16,7 @@ const TIERS = [
     icon: Ticket,
     badge: 'Legjobb ár',
     badgeTone: 'accent',
-    price: '34 900',
+    price: fmtPrice(PRICES.earlyBird),
     suffix: 'Ft',
     note: 'Korlátozott darabszám — amíg a keret tart',
     forWho: 'A leggyorsabbaknak, akik most döntenek.',
@@ -27,7 +35,7 @@ const TIERS = [
     icon: Crown,
     badge: 'Legnépszerűbb',
     badgeTone: 'primary',
-    price: '89 900',
+    price: fmtPrice(PRICES.vip),
     suffix: 'Ft',
     note: 'Szigorúan limitált VIP férőhely',
     forWho: 'Akik a legmélyebb, személyes élményre vágynak.',
@@ -47,7 +55,7 @@ const TIERS = [
     icon: Ticket,
     badge: null,
     badgeTone: 'accent',
-    price: '49 900',
+    price: fmtPrice(PRICES.normal),
     suffix: 'Ft',
     note: 'Teljes árú belépő az élő eseményre',
     forWho: 'Akik a teljes élő napot és az anyagokat szeretnék.',
