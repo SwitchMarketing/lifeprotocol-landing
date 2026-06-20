@@ -6,6 +6,7 @@ import Problem from './components/Problem.jsx'
 import Audience from './components/Audience.jsx'
 import Topics from './components/Topics.jsx'
 import Speaker from './components/Speaker.jsx'
+import EventDetails from './components/EventDetails.jsx'
 import Pricing from './components/Pricing.jsx'
 import Urgency from './components/Urgency.jsx'
 import Footer from './components/Footer.jsx'
@@ -32,6 +33,7 @@ export default function App() {
         <Audience />
         <Topics />
         <Speaker />
+        <EventDetails />
         <Urgency />
         <Pricing />
       </main>

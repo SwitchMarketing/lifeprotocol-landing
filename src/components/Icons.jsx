@@ -86,6 +86,13 @@ export const Heart = (p) => (
   </svg>
 )
 
+export const Calendar = (p) => (
+  <svg {...base} {...p}>
+    <rect x="3" y="4" width="18" height="18" rx="2" />
+    <path d="M3 10h18M8 2v4M16 2v4" />
+  </svg>
+)
+
 export const Clock = (p) => (
   <svg {...base} {...p}>
     <circle cx="12" cy="12" r="9" />

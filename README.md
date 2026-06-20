@@ -37,7 +37,7 @@ töltve. Érték módosítása után újra kell buildelni (a Vite build időben 
 
 ## Felépítés
 
-- `src/components/` — szekciók: Hero, Problem, Audience, Topics, Speaker, Urgency, Pricing, Footer
+- `src/components/` — szekciók: Hero, Problem, Audience, Topics, Speaker, EventDetails, Urgency, Pricing, Footer
 - `src/hooks/` — `useTheme` (téma), `useScrollReveal` (görgetés-animációk)
 - `src/lib/analytics.js` — env-vezérelt GTM / Meta Pixel loaderek
 - `src/index.css` — design tokenek (Clinical Precision rendszer, light/dark CSS-változók)

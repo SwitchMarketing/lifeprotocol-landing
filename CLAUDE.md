@@ -6,7 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Single-page, high-conversion landing page (in Hungarian) for the Life Protocol live event.
 React 18 + Vite 5 + Tailwind CSS v4. No router, no backend — one scrolling page composed of
-section components in `src/App.jsx`. Source copy/structure brief is `docs/initial_prompt.md`.
+section components in `src/App.jsx` (Hero, Problem, Audience, Topics, Speaker, EventDetails,
+Urgency, Pricing, Footer). Source copy/structure brief is `docs/initial_prompt.md`. Site copy is
+Hungarian; event facts (date, time, venue, prices, deadline) come from `.env` via `src/lib/config.js`.
 
 ## Commands
 

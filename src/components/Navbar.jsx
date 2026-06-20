@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import ThemeToggle from './ThemeToggle.jsx'
 import { ArrowRight } from './Icons.jsx'
+import { EVENT_LOCATION } from '../lib/config.js'
 
 const LINKS = [
   { href: '#problema', label: 'A probléma' },
   { href: '#kinek', label: 'Kinek szól' },
   { href: '#tematika', label: 'Tematika' },
   { href: '#eloado', label: 'Az előadó' },
+  { href: '#helyszin', label: 'Helyszín' },
   { href: '#jegyek', label: 'Jegyek' },
 ]
 
@@ -38,7 +40,7 @@ export default function Navbar({ theme, onToggle }) {
           </span>
           <span className="flex flex-col leading-none">
             <span className={`text-[15px] font-extrabold tracking-tight transition-colors ${scrolled ? 'text-on-surface' : 'text-white'}`}>Life Protocol</span>
-            <span className={`text-[11px] font-medium uppercase tracking-[0.18em] transition-colors ${scrolled ? 'text-on-surface-variant' : 'text-white/70'}`}>Live · Budapest</span>
+            <span className={`text-[11px] font-medium uppercase tracking-[0.18em] transition-colors ${scrolled ? 'text-on-surface-variant' : 'text-white/70'}`}>Live · {EVENT_LOCATION}</span>
           </span>
         </a>
 
