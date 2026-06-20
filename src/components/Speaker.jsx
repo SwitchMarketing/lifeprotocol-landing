@@ -13,7 +13,7 @@ export default function Speaker() {
   return (
     <section
       id="eloado"
-      className="relative scroll-mt-24 overflow-hidden px-4 py-20 text-white sm:px-6 sm:py-28"
+      className="relative scroll-mt-24 overflow-hidden px-4 py-14 text-white sm:px-6 sm:py-20 lg:py-28"
       style={{ background: 'linear-gradient(135deg,#04212c 0%,#063a4c 52%,#04212c 100%)' }}
     >
       {/* Decorative glows + grid (fixed look in both themes) */}

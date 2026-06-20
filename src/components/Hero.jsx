@@ -84,12 +84,12 @@ export default function Hero() {
             Kutatásokon alapuló, funkcionális és biofizikai megközelítés — marketing-sallang nélkül.
           </div>
 
-          <dl className="animate-rise mt-12 grid max-w-xl grid-cols-3 gap-3 sm:gap-5" style={{ animationDelay: '260ms' }}>
+          <dl className="animate-rise mt-12 grid max-w-xl grid-cols-3 gap-2.5 sm:gap-5" style={{ animationDelay: '260ms' }}>
             {STATS.map((s) => (
-              <div key={s.label} className="rounded-xl border border-white/12 bg-white/5 p-4 text-center backdrop-blur-sm">
+              <div key={s.label} className="min-w-0 rounded-xl border border-white/12 bg-white/5 p-3 text-center backdrop-blur-sm sm:p-4">
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="text-2xl font-extrabold tracking-tight text-[#80d1f5] sm:text-3xl">{s.value}</dd>
-                <p className="mt-1 text-xs font-medium text-white/70 sm:text-sm">{s.label}</p>
+                <dd className="break-words text-base font-extrabold leading-tight tracking-tight text-[#80d1f5] min-[400px]:text-xl sm:text-3xl">{s.value}</dd>
+                <p className="mt-1 text-[11px] font-medium leading-tight text-white/70 min-[400px]:text-xs sm:text-sm">{s.label}</p>
               </div>
             ))}
           </dl>

@@ -18,7 +18,7 @@ const SOLUTION = [
 
 export default function Problem() {
   return (
-    <Section id="problema" className="border-y border-outline bg-section-alt py-20 transition-colors duration-300 sm:py-28">
+    <Section id="problema" className="border-y border-outline bg-section-alt py-14 transition-colors duration-300 sm:py-20 lg:py-28">
       <SectionHeading
         eyebrow="Miért kell itt lenned?"
         title="Hiába a tiszta étkezés, ha a terheltség a sejtjeidben van."

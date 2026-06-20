@@ -30,7 +30,7 @@ const TOPICS = [
 
 export default function Topics() {
   return (
-    <Section id="tematika" className="border-y border-outline bg-section-alt py-20 transition-colors duration-300 sm:py-28">
+    <Section id="tematika" className="border-y border-outline bg-section-alt py-14 transition-colors duration-300 sm:py-20 lg:py-28">
       <SectionHeading
         eyebrow="A rendezvény főbb tematikái"
         title="Három protokoll-blokk, ami átírja a regenerációd."

@@ -19,7 +19,7 @@ function getRemaining() {
 function CountUnit({ value, label }) {
   return (
     <div className="flex flex-col items-center">
-      <span className="grid min-w-[3.75rem] place-items-center rounded-lg bg-surface-container px-3 py-2.5 text-2xl font-extrabold tabular-nums text-on-surface shadow-soft sm:min-w-[4.5rem] sm:text-3xl">
+      <span className="grid min-w-[2.5rem] place-items-center rounded-lg bg-surface-container px-2 py-2 text-xl font-extrabold tabular-nums text-on-surface shadow-soft min-[400px]:min-w-[3rem] min-[400px]:px-2.5 min-[400px]:text-2xl sm:min-w-[4.5rem] sm:px-3 sm:py-2.5 sm:text-3xl">
         {String(value).padStart(2, '0')}
       </span>
       <span className="mt-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
@@ -39,7 +39,7 @@ export default function Urgency() {
 
   return (
     <Section className="py-10 sm:py-16">
-      <div className="reveal relative overflow-hidden rounded-2xl border border-outline bg-surface-mist p-8 shadow-soft sm:p-12">
+      <div className="reveal relative overflow-hidden rounded-2xl border border-outline bg-surface-mist p-5 shadow-soft min-[400px]:p-6 sm:p-12">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -left-10 top-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,var(--hero-glow-b),transparent_65%)]" />
           <div className="absolute -right-10 bottom-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,var(--hero-glow-a),transparent_65%)]" />
@@ -55,13 +55,13 @@ export default function Urgency() {
             A terem befogadóképessége véges — és az Early Bird ár hamarosan lejár.
           </h2>
 
-          <div className="flex items-center gap-2.5 sm:gap-4">
+          <div className="flex items-center gap-1.5 min-[400px]:gap-2 sm:gap-4">
             <CountUnit value={t.days} label="Nap" />
-            <span className="pb-6 text-2xl font-bold text-outline-strong">:</span>
+            <span className="pb-5 text-lg font-bold text-outline-strong min-[400px]:text-2xl sm:pb-6">:</span>
             <CountUnit value={t.hours} label="Óra" />
-            <span className="pb-6 text-2xl font-bold text-outline-strong">:</span>
+            <span className="pb-5 text-lg font-bold text-outline-strong min-[400px]:text-2xl sm:pb-6">:</span>
             <CountUnit value={t.minutes} label="Perc" />
-            <span className="pb-6 text-2xl font-bold text-outline-strong">:</span>
+            <span className="pb-5 text-lg font-bold text-outline-strong min-[400px]:text-2xl sm:pb-6">:</span>
             <CountUnit value={t.seconds} label="Mp" />
           </div>
 

@@ -31,7 +31,7 @@ const PROFILES = [
 
 export default function Audience() {
   return (
-    <Section id="kinek" className="py-20 sm:py-28">
+    <Section id="kinek" className="py-14 sm:py-20 lg:py-28">
       <SectionHeading
         eyebrow="Kiknek kötelező a részvétel?"
         title="Ha magadra ismersz, ez a nap neked szól."
